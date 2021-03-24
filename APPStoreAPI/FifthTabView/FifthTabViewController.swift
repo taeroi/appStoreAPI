@@ -21,9 +21,9 @@ class FifthTabViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearchBar()
+        dismissKeyboardWhenTappedAround()
         
-        emptyView.isHidden = true
-        appDataListTableView.isHidden = false
+        showEmptyView()
         
         let appDataListCellNib = UINib(nibName: AppDataTableViewCell.nibName, bundle: Bundle.main)
         appDataListTableView.register(appDataListCellNib, forCellReuseIdentifier: AppDataTableViewCell.identifier)
@@ -31,10 +31,7 @@ class FifthTabViewController: UIViewController{
         appDataListTableView.dataSource = self
         
         appDataListTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        appDataListNetworkManager.getAppDataList(delegate: self)
-
     }
-
 
 }
 
@@ -43,13 +40,11 @@ extension FifthTabViewController: UISearchBarDelegate,UISearchControllerDelegate
     
     // SearchBar Setup
     func setupSearchBar() {
-//        navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         searchBar.delegate = self
         searchBar.setImage(UIImage(named: "icCancel"), for: .clear, state: .normal)
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.tintColor = .black
         
-        // Set the SearchBar
         searchBar.sizeToFit()
         searchBar.tintColor = .gray
         searchBar.placeholder = "Search your app"
@@ -60,10 +55,16 @@ extension FifthTabViewController: UISearchBarDelegate,UISearchControllerDelegate
         navigationItem.titleView = shouldShow ? searchBar : nil
     }
     
-    // Connect Serach Network
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("Search text test: \(searchText)")
+    // Touched Search Button
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        appDataListNetworkManager.getAppDataList(delegate: self, searchText: searchBar.text ?? "")
+        print("Search Text:",searchBar.text ?? "")
+    }
     
+    // Check Search Text & Convert Screen
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchText.count == 0 ? showEmptyView() : showTableView()
+        print("Search text: \(searchText)")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -75,7 +76,6 @@ extension FifthTabViewController: UISearchBarDelegate,UISearchControllerDelegate
 extension FifthTabViewController: UITableViewDelegate, UITableViewDataSource  {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results.count
-
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -97,12 +97,23 @@ extension FifthTabViewController: GetAppDataListViewDelegate{
     func didRetrieveAppDataInfo(_ results: [Results]) {
         self.results = results
         appDataListTableView.reloadData()
-    
     }
     
     func failedToRequestAppDataInfo(message: String) {
         self.presentAlert(title: message)
     }
+}
+
+//MARK: View show & hide
+extension FifthTabViewController{
     
+    func showTableView(){
+        self.appDataListTableView.isHidden = false
+        self.emptyView.isHidden = true
+    }
     
+    func showEmptyView(){
+        self.appDataListTableView.isHidden = true
+        self.emptyView.isHidden = false
+    }
 }

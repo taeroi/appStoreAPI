@@ -11,9 +11,9 @@ import UIKit
 class AppDataListNetworkManager: GetAppDataListNetworkManagerDelegate {
     
     let session = URLSession.shared
-    func getAppDataList(delegate: GetAppDataListViewDelegate) {
-        
-        if let encodedString = Constant.BASE_URL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+    func getAppDataList(delegate: GetAppDataListViewDelegate, searchText: String) {
+        let searchTextUrl: String = "\(Constant.BASE_URL)/search?entity=software&term=\(searchText)"
+        if let encodedString = searchTextUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
            let requestUrl = URL(string: encodedString){
             let dataTask = session.dataTask(with: requestUrl){ (data: Data?, response: URLResponse?, error: Error?) in
                 DispatchQueue.main.async {

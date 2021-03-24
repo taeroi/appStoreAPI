@@ -6,5 +6,5 @@
 //
 
 struct Constant {
-    static let BASE_URL: String = "https://itunes.apple.com/search?entity=software&term=룩핀"
+    static let BASE_URL: String = "https://itunes.apple.com"
 }

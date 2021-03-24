@@ -11,5 +11,5 @@ protocol GetAppDataListViewDelegate {
 }
 
 protocol GetAppDataListNetworkManagerDelegate {
-    func getAppDataList(delegate: GetAppDataListViewDelegate)
+    func getAppDataList(delegate: GetAppDataListViewDelegate, searchText: String)
 }
