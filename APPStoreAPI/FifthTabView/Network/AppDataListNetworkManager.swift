@@ -11,8 +11,10 @@ import UIKit
 class AppDataListNetworkManager: GetAppDataListNetworkManagerDelegate {
     
     let session = URLSession.shared
-        func getAppDataList(delegate: GetAppDataListViewDelegate) {
-            guard let requestUrl = URL(string: "\(Constant.BASE_URL)") else {return}
+    func getAppDataList(delegate: GetAppDataListViewDelegate) {
+        
+        if let encodedString = Constant.BASE_URL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+           let requestUrl = URL(string: encodedString){
             let dataTask = session.dataTask(with: requestUrl){ (data: Data?, response: URLResponse?, error: Error?) in
                 DispatchQueue.main.async {
                     guard let jsonData = data else {
@@ -33,6 +35,7 @@ class AppDataListNetworkManager: GetAppDataListNetworkManagerDelegate {
                 }
             }
             dataTask.resume()
-        }
+}
+    }
     
 }

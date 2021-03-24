@@ -20,8 +20,7 @@ class FifthTabViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setupSearchBar()
-//        searchBar.delegate = self
+        setupSearchBar()
         
         emptyView.isHidden = true
         appDataListTableView.isHidden = false
@@ -31,6 +30,7 @@ class FifthTabViewController: UIViewController{
         appDataListTableView.delegate = self
         appDataListTableView.dataSource = self
         
+        appDataListTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         appDataListNetworkManager.getAppDataList(delegate: self)
 
     }
@@ -43,16 +43,16 @@ extension FifthTabViewController: UISearchBarDelegate,UISearchControllerDelegate
     
     // SearchBar Setup
     func setupSearchBar() {
-        navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+//        navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         searchBar.delegate = self
-        
+        searchBar.setImage(UIImage(named: "icCancel"), for: .clear, state: .normal)
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.tintColor = .black
         
         // Set the SearchBar
         searchBar.sizeToFit()
         searchBar.tintColor = .gray
-        searchBar.placeholder = "search"
+        searchBar.placeholder = "Search your app"
         search(shouldShow: true)
     }
     
@@ -71,7 +71,7 @@ extension FifthTabViewController: UISearchBarDelegate,UISearchControllerDelegate
     }
 }
 
-//MARK: App data Collection View
+//MARK: App data Table View
 extension FifthTabViewController: UITableViewDelegate, UITableViewDataSource  {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results.count
