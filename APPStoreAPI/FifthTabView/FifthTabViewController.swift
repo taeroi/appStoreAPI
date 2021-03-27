@@ -12,7 +12,7 @@ class FifthTabViewController: UIViewController{
     
     @IBOutlet weak var appDataListTableView: UITableView!
     @IBOutlet weak var emptyView: UIView!
-
+    
     var results: [Results] = []
     let searchBar = UISearchBar()
     
@@ -21,7 +21,7 @@ class FifthTabViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearchBar()
-        dismissKeyboardWhenTappedAround()
+        //        dismissKeyboardWhenTappedAround()
         
         showEmptyView()
         
@@ -32,11 +32,11 @@ class FifthTabViewController: UIViewController{
         
         appDataListTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
-
+    
 }
 
 //MARK: Delegate - SearchBar
-extension FifthTabViewController: UISearchBarDelegate,UISearchControllerDelegate {
+extension FifthTabViewController: UISearchBarDelegate,UISearchControllerDelegate{
     
     // SearchBar Setup
     func setupSearchBar() {
@@ -82,14 +82,26 @@ extension FifthTabViewController: UITableViewDelegate, UITableViewDataSource  {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AppDataTableViewCell.identifier, for: indexPath) as?  AppDataTableViewCell else {
             return UITableViewCell()
         }
-        cell.updateUI(results: results[indexPath.row])
+        if cell.imageView?.image == nil && cell.fisrtThumbNailImageView == nil {
+            cell.imageView?.image = UIImage(named: "appstore_icon")
+            cell.fisrtThumbNailImageView.image = UIImage(named: "appstore_icon")
+            cell.secondThumbNailImageView.image = UIImage(named: "appstore_icon")
+            cell.thirdThumbNailImageView.image = UIImage(named: "appstore_icon")
+            
+        } else{
+            cell.updateUI(results: self.results[indexPath.row])}
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return AppDataTableViewCell.height
     }
-
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = DetailViewController(results: results[indexPath.row])
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
 }
 
 //MARK: Network Delegate

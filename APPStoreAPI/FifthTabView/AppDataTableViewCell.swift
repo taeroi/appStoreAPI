@@ -14,13 +14,21 @@ class AppDataTableViewCell: UITableViewCell {
     @IBOutlet weak var userRatingCountLabel: UILabel!
     
     @IBOutlet weak var downloadBtn: UIButton!
-    @IBOutlet weak var fisrtThumbNailImageVIew: UIImageView!
+    @IBOutlet weak var fisrtThumbNailImageView: UIImageView!
     @IBOutlet weak var secondThumbNailImageView: UIImageView!
     @IBOutlet weak var thirdThumbNailImageView: UIImageView!
     
     static let nibName: String = "AppDataTableViewCell"
     static let identifier: String = "AppDataTableViewCell"
     static let height: CGFloat = 370
+        
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.iconImageView.image = UIImage(named: "")
+        self.fisrtThumbNailImageView.image = UIImage(named: "")
+        self.secondThumbNailImageView.image = UIImage(named: "")
+        self.thirdThumbNailImageView.image = UIImage(named: "")
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,19 +46,27 @@ class AppDataTableViewCell: UITableViewCell {
         applicationNameLabel.text = results.trackName
         userRatingCountLabel.text = String(format: "%.2f",results.averageUserRatingForCurrentVersion)
         
-        iconImageView.load(urlString: results.artworkUrl60, contentMode: .scaleAspectFit)
+//        iconImageView.load(urlString: results.artworkUrl60, contentMode: .scaleAspectFit)
+        iconImageView.load(results.artworkUrl60)
         
         let screenShotUrlsCount = results.screenshotUrls.count
         
         if screenShotUrlsCount >= 3 {
-            fisrtThumbNailImageVIew.load(urlString: results.screenshotUrls[0], contentMode: .scaleToFill)
-            secondThumbNailImageView.load(urlString: results.screenshotUrls[1], contentMode: .scaleToFill)
-            thirdThumbNailImageView.load(urlString: results.screenshotUrls[2], contentMode: .scaleToFill)
+            fisrtThumbNailImageView.load(results.screenshotUrls[0])
+            secondThumbNailImageView.load(results.screenshotUrls[1])
+            thirdThumbNailImageView.load(results.screenshotUrls[2])
+
+//            fisrtThumbNailImageView.load(urlString: results.screenshotUrls[0], contentMode: .scaleToFill)
+//            secondThumbNailImageView.load(urlString: results.screenshotUrls[1], contentMode: .scaleToFill)
+//            thirdThumbNailImageView.load(urlString: results.screenshotUrls[2], contentMode: .scaleToFill)
         } else if screenShotUrlsCount == 2{
-            fisrtThumbNailImageVIew.load(urlString: results.screenshotUrls[0], contentMode: .scaleToFill)
-            secondThumbNailImageView.load(urlString: results.screenshotUrls[1], contentMode: .scaleToFill)
+            fisrtThumbNailImageView.load(results.screenshotUrls[0])
+            secondThumbNailImageView.load(results.screenshotUrls[1])
+//            fisrtThumbNailImageView.load(urlString: results.screenshotUrls[0], contentMode: .scaleToFill)
+//            secondThumbNailImageView.load(urlString: results.screenshotUrls[1], contentMode: .scaleToFill)
         } else {
-            fisrtThumbNailImageVIew.load(urlString: results.screenshotUrls[0], contentMode: .scaleToFill)
+            thirdThumbNailImageView.load(results.screenshotUrls[2])
+//            fisrtThumbNailImageView.load(urlString: results.screenshotUrls[0], contentMode: .scaleToFill)
         }
     }
 }

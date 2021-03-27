@@ -22,4 +22,5 @@ struct Results: Decodable {
     let description: String             //앱 설명
     let averageUserRatingForCurrentVersion: Double //평점
     let userRatingCount: Int            //유저 반응수
+    let releaseNotes: String?           //릴리즈노트
 }
