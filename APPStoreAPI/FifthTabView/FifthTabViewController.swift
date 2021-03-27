@@ -15,6 +15,8 @@ class FifthTabViewController: UIViewController{
     
     var results: [Results] = []
     let searchBar = UISearchBar()
+    var searchText: String = ""
+    var contrastText: String = ""
     
     var appDataListNetworkManager: GetAppDataListNetworkManagerDelegate = AppDataListNetworkManager()
     
@@ -55,20 +57,28 @@ extension FifthTabViewController: UISearchBarDelegate,UISearchControllerDelegate
         navigationItem.titleView = shouldShow ? searchBar : nil
     }
     
-    // Touched Search Button
+    // Start Edit SearchBar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         appDataListNetworkManager.getAppDataList(delegate: self, searchText: searchBar.text ?? "")
-        print("Search Text:",searchBar.text ?? "")
+        showTableView()
+        self.searchText = searchBar.searchTextField.text ?? ""
+    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        print("ggik")
+    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        print("end")
     }
     
-    // Check Search Text & Convert Screen
+    // Check Search Text, Current Search Text & Convert Screen
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchText.count == 0 ? showEmptyView() : showTableView()
         print("Search text: \(searchText)")
+        searchText.count == self.searchText.count ? showTableView() : showEmptyView()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+        print("touchesBegan")
     }
 }
 

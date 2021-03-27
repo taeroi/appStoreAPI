@@ -55,18 +55,11 @@ class AppDataTableViewCell: UITableViewCell {
             fisrtThumbNailImageView.load(results.screenshotUrls[0])
             secondThumbNailImageView.load(results.screenshotUrls[1])
             thirdThumbNailImageView.load(results.screenshotUrls[2])
-
-//            fisrtThumbNailImageView.load(urlString: results.screenshotUrls[0], contentMode: .scaleToFill)
-//            secondThumbNailImageView.load(urlString: results.screenshotUrls[1], contentMode: .scaleToFill)
-//            thirdThumbNailImageView.load(urlString: results.screenshotUrls[2], contentMode: .scaleToFill)
         } else if screenShotUrlsCount == 2{
             fisrtThumbNailImageView.load(results.screenshotUrls[0])
             secondThumbNailImageView.load(results.screenshotUrls[1])
-//            fisrtThumbNailImageView.load(urlString: results.screenshotUrls[0], contentMode: .scaleToFill)
-//            secondThumbNailImageView.load(urlString: results.screenshotUrls[1], contentMode: .scaleToFill)
         } else {
-            thirdThumbNailImageView.load(results.screenshotUrls[2])
-//            fisrtThumbNailImageView.load(urlString: results.screenshotUrls[0], contentMode: .scaleToFill)
+            thirdThumbNailImageView.load(results.screenshotUrls[0])
         }
     }
 }
