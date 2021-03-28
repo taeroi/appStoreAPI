@@ -72,7 +72,7 @@ extension FifthTabViewController: UISearchBarDelegate,UISearchControllerDelegate
     // Check Search Text, Current Search Text & Convert Screen
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("Search text: \(searchText)")
-        searchText.count == self.searchedText.count ? showTableView() : showEmptyView()
+        searchText == self.searchedText ? showTableView() : showEmptyView()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

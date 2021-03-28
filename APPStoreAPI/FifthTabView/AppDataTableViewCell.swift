@@ -13,6 +13,7 @@ class AppDataTableViewCell: UITableViewCell {
     @IBOutlet weak var applicationNameLabel: UILabel!
     @IBOutlet weak var userRatingCountLabel: UILabel!
     
+    @IBOutlet weak var censoredNameLabel: UILabel!
     @IBOutlet weak var downloadBtn: UIButton!
     @IBOutlet weak var fisrtThumbNailImageView: UIImageView!
     @IBOutlet weak var secondThumbNailImageView: UIImageView!
@@ -45,6 +46,7 @@ class AppDataTableViewCell: UITableViewCell {
         
         applicationNameLabel.text = results.trackName
         userRatingCountLabel.text = String(format: "%.2f",results.averageUserRatingForCurrentVersion)
+        censoredNameLabel.text = results.trackCensoredName
         
 //        iconImageView.load(urlString: results.artworkUrl60, contentMode: .scaleAspectFit)
         iconImageView.load(results.artworkUrl60)

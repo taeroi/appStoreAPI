@@ -156,6 +156,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="applicationNameLabel" destination="tjN-3T-5af" id="CDQ-fb-SHK"/>
+                <outlet property="censoredNameLabel" destination="gU1-2w-ctt" id="ano-Ww-0xu"/>
                 <outlet property="downloadBtn" destination="hI7-Ig-hQw" id="hKl-0u-azx"/>
                 <outlet property="fisrtThumbNailImageView" destination="FzW-uV-iD4" id="Cle-i8-fe3"/>
                 <outlet property="iconImageView" destination="P0f-9z-RLI" id="fcK-cg-Qha"/>

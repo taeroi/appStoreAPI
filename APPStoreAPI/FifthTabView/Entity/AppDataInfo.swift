@@ -15,6 +15,7 @@ struct Results: Decodable {
     let artworkUrl60: String            //아이콘
     let artistViewUrl: String           //회사 url
     let trackName: String               //이름
+    let trackCensoredName: String       //censord name
     let artistName: String              //개발사
     let languageCodesISO2A: [String]    //언어
     let contentAdvisoryRating: String   //연령대

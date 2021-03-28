@@ -35,6 +35,8 @@
 		6424BDCF260B2EE300043AA3 /* AppDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424BDCD260B2EE300043AA3 /* AppDataTableViewCell.swift */; };
 		6424BDD0260B2EE300043AA3 /* AppDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6424BDCE260B2EE300043AA3 /* AppDataTableViewCell.xib */; };
 		6424BDD8260B561F00043AA3 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424BDD7260B561F00043AA3 /* UIImage.swift */; };
+		649D46992610B8A900EC6CF6 /* ScreenShotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D46972610B8A900EC6CF6 /* ScreenShotCollectionViewCell.swift */; };
+		649D469A2610B8A900EC6CF6 /* ScreenShotCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649D46982610B8A900EC6CF6 /* ScreenShotCollectionViewCell.xib */; };
 		64A0FC05260B6FB300931EFF /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A0FC04260B6FB300931EFF /* Keyboard.swift */; };
 		64A0FC0B260B778800931EFF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A0FC09260B778800931EFF /* DetailViewController.swift */; };
 		64A0FC0C260B778800931EFF /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A0FC0A260B778800931EFF /* DetailViewController.xib */; };
@@ -95,6 +97,8 @@
 		6424BDCD260B2EE300043AA3 /* AppDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataTableViewCell.swift; sourceTree = "<group>"; };
 		6424BDCE260B2EE300043AA3 /* AppDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppDataTableViewCell.xib; sourceTree = "<group>"; };
 		6424BDD7260B561F00043AA3 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		649D46972610B8A900EC6CF6 /* ScreenShotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShotCollectionViewCell.swift; sourceTree = "<group>"; };
+		649D46982610B8A900EC6CF6 /* ScreenShotCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScreenShotCollectionViewCell.xib; sourceTree = "<group>"; };
 		64A0FC04260B6FB300931EFF /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		64A0FC09260B778800931EFF /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		64A0FC0A260B778800931EFF /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 				6424BD41260AF8DB00043AA3 /* FourthTabView */,
 				6424BD3E260AF8B300043AA3 /* FifthTabView */,
 				64A0FC10260B77AB00931EFF /* DetailView */,
+				6424BDB4260B1D9400043AA3 /* Extension */,
 				6424BD1E260AF81100043AA3 /* Support */,
 				6424BCDB260AE2F700043AA3 /* Info.plist */,
 				6424BCD3260AE2F600043AA3 /* AppStoreAPI.xcdatamodeld */,
@@ -210,7 +215,6 @@
 			children = (
 				6424BD68260AF95300043AA3 /* BaseTabBarController.swift */,
 				6424BDC8260B25A100043AA3 /* Constant.swift */,
-				6424BDB4260B1D9400043AA3 /* Extension */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -332,6 +336,8 @@
 			children = (
 				64A0FC09260B778800931EFF /* DetailViewController.swift */,
 				64A0FC0A260B778800931EFF /* DetailViewController.xib */,
+				649D46972610B8A900EC6CF6 /* ScreenShotCollectionViewCell.swift */,
+				649D46982610B8A900EC6CF6 /* ScreenShotCollectionViewCell.xib */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -454,6 +460,7 @@
 			files = (
 				6424BD64260AF93800043AA3 /* FifthTabViewController.xib in Resources */,
 				6424BDD0260B2EE300043AA3 /* AppDataTableViewCell.xib in Resources */,
+				649D469A2610B8A900EC6CF6 /* ScreenShotCollectionViewCell.xib in Resources */,
 				6424BD5D260AF92E00043AA3 /* FourthTabViewController.xib in Resources */,
 				6424BCDA260AE2F700043AA3 /* LaunchScreen.storyboard in Resources */,
 				64A0FC0C260B778800931EFF /* DetailViewController.xib in Resources */,
@@ -556,6 +563,7 @@
 			files = (
 				6424BCD5260AE2F600043AA3 /* AppStoreAPI.xcdatamodeld in Sources */,
 				6424BD69260AF95300043AA3 /* BaseTabBarController.swift in Sources */,
+				649D46992610B8A900EC6CF6 /* ScreenShotCollectionViewCell.swift in Sources */,
 				6424BD93260B0BB500043AA3 /* AppDataListNetworkManager.swift in Sources */,
 				6424BDC9260B25A100043AA3 /* Constant.swift in Sources */,
 				64A0FC05260B6FB300931EFF /* Keyboard.swift in Sources */,
