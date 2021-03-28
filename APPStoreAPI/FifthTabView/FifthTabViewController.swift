@@ -15,8 +15,7 @@ class FifthTabViewController: UIViewController{
     
     var results: [Results] = []
     let searchBar = UISearchBar()
-    var searchText: String = ""
-    var contrastText: String = ""
+    var searchedText: String = ""
     
     var appDataListNetworkManager: GetAppDataListNetworkManagerDelegate = AppDataListNetworkManager()
     
@@ -61,7 +60,7 @@ extension FifthTabViewController: UISearchBarDelegate,UISearchControllerDelegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         appDataListNetworkManager.getAppDataList(delegate: self, searchText: searchBar.text ?? "")
         showTableView()
-        self.searchText = searchBar.searchTextField.text ?? ""
+        self.searchedText = searchBar.searchTextField.text ?? ""
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         print("ggik")
@@ -73,7 +72,7 @@ extension FifthTabViewController: UISearchBarDelegate,UISearchControllerDelegate
     // Check Search Text, Current Search Text & Convert Screen
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("Search text: \(searchText)")
-        searchText.count == self.searchText.count ? showTableView() : showEmptyView()
+        searchText.count == self.searchedText.count ? showTableView() : showEmptyView()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -92,14 +91,8 @@ extension FifthTabViewController: UITableViewDelegate, UITableViewDataSource  {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AppDataTableViewCell.identifier, for: indexPath) as?  AppDataTableViewCell else {
             return UITableViewCell()
         }
-        if cell.imageView?.image == nil && cell.fisrtThumbNailImageView == nil {
-            cell.imageView?.image = UIImage(named: "appstore_icon")
-            cell.fisrtThumbNailImageView.image = UIImage(named: "appstore_icon")
-            cell.secondThumbNailImageView.image = UIImage(named: "appstore_icon")
-            cell.thirdThumbNailImageView.image = UIImage(named: "appstore_icon")
-            
-        } else{
-            cell.updateUI(results: self.results[indexPath.row])}
+        cell.selectionStyle = .none
+        cell.updateUI(results: self.results[indexPath.row])
         return cell
     }
     

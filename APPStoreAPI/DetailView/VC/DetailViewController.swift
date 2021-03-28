@@ -9,6 +9,18 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var userRateCountLabel: UILabel!
+    @IBOutlet weak var userRateAverageLabel: UILabel!
+    @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var chartLabel: UILabel!
+    @IBOutlet weak var developerLabel: UILabel!
+    @IBOutlet weak var languageLabel: UILabel!
+    
+    
+    
+    
     var results: [Results]
     
         init(results: Results){

@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIImageView {
-    //// Returns activity indicator view centrally aligned inside the UIImageView
+    /// Returns activity indicator view centrally aligned inside the UIImageView
         private var activityIndicator: UIActivityIndicatorView {
             let activityIndicator = UIActivityIndicatorView()
             activityIndicator.hidesWhenStopped = true
